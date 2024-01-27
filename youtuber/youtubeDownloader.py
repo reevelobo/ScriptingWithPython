@@ -2,7 +2,7 @@ from pytube import YouTube
 import tkinter as tk
 from tkinter import filedialog
 
-def download_vider(url, save_path):
+def download_video(url, save_path):
     try: 
         yt = YouTube(url)
         streams = yt.streams.filter(progressive=True,file_extension="mp4")
@@ -12,11 +12,27 @@ def download_vider(url, save_path):
     except Exception as e:
         print(e)
 
-url = "https://www.youtube.com/watch?v=AwPiUIL8ep8"
-save_path = "/Users/reevelobo/Desktop/Scripts/youtubeDownloader"
+#
+def open_file_dialog():
+    folder= filedialog.askdirectory()
+    if folder:
+        print(f"Selected Folder : {folder}")
+        return folder
 
-download_vider(url, save_path)
 
+# Specifies that you are directly running the python file before it executes anything under it 
+if __name__=="__main__":
+    root = tk.Tk()
+    root.withdraw()
+
+    vider_url = input("Please Enter the Youtube URL : ")
+    save_dir = open_file_dialog()
+
+    if not save_dir:
+        print ("Invalid save location !!")
+    else: 
+        print("Started Download....")
+        download_video(vider_url, save_dir)
 
 
 

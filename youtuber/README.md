@@ -1,4 +1,4 @@
-# NBAScore
+# Youtube Downloader
 
 ### Deescription 
 <p>Python project that can be used to download youtube videos.</p>
